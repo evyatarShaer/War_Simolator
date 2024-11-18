@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 interface MissileModel {
+  _id: string;
   name: string;
   amount: number;
 }

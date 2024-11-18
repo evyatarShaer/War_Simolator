@@ -22,3 +22,7 @@ export const insertMissile = async () => {
     }
   }
 };
+
+export const findMissileByName = async (name: string) => {
+  return await Missiles.findOne({ name });
+}
