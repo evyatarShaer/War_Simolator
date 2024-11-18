@@ -14,11 +14,13 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const selectedOrganization = region ? `${organization} - ${region}` : organization;
+
     try {
       const response = await axios.post(`${BASE_URL}auth/register`, {
         username: name,
         password,
-        organization: organization,
+        organization: selectedOrganization,
       });
 
       console.log(response.data);
@@ -57,9 +59,7 @@ const Register = () => {
           value={organization}
           onChange={(e) => {
             setOrganization(e.target.value);
-            if (e.target.value === "IDF") {
-              setRegion("");
-            }
+            setRegion("")
           }}
           required
         >

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from './featurs/user';
+import userReducer from './featurs/userSlice';
+import missileReducer from './featurs/sendMissile';
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
+        missile: missileReducer,
     },
 });
 

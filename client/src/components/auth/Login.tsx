@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../../services/userApi';
 import styles from './login.module.css';
+import { AppDispatch } from '../../store/store';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,6 +12,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +28,9 @@ const Login = () => {
       if (response.data && response.data.token) {
         localStorage.setItem('username', name);
         localStorage.setItem('token', response.data.token);
+
+        dispatch(fetchUser(name));
+
         navigate('/users');
       } else {
         alert('ההתחברות נכשלה. אנא בדוק את הנתונים שהזנת.');

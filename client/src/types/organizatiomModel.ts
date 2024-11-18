@@ -1,4 +1,5 @@
-interface MissileModel {
+export interface MissileModel {
+  _id: string;
   name: string;
   amount: number;
 }
