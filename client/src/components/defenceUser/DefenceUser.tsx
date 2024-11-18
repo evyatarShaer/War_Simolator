@@ -3,6 +3,7 @@ import { fetchUser, sendMissile } from "../../services/userApi";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store/store";
 import styles from "./defenceUser.module.css";
+import Chat from '../chat/Chat';
 
 const DefenceUser: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -52,7 +53,7 @@ const DefenceUser: React.FC = () => {
               <th>Status</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody><Chat/></tbody>
         </table>
       </div>
     </div>
