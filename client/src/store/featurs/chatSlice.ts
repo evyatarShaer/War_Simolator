@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { MessageModel } from '../../types/messageModel';
 
 // המצב ההתחלתי של הצ'אט
 interface ChatState {
-  messages: string[];
+  messages: MessageModel[];
 }
 
 const initialState: ChatState = {
@@ -14,7 +15,7 @@ const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    addMessage: (state, action: PayloadAction<string>) => {
+    addMessage: (state, action: PayloadAction<MessageModel>) => {
       state.messages.push(action.payload); // הוספת הודעה למצב
     },
   },
